@@ -1,0 +1,27 @@
+body {
+    font-family:"微软雅黑" ,"Microsoft Yahei",arial,"Hiragino Sans GB",sans-serif;
+}
+.sweet-alert .sa-icon.sa-custom{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    overflow: hidden;
+}
+.control-label{
+    font-weight: normal;
+}
+.modal-header{
+    background-color: slategray;
+}
+.modal-header .modal-title{
+    color: whitesmoke;
+    text-align: center;
+}
+.modal-body{
+    background-color: #EEE;
+}
+.modal-footer{
+    background-color: #DDD;
+}
+.table-striped td a{
+    text-decoration: none;
+}

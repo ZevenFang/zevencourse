@@ -1,0 +1,55 @@
+<button class="btn btn-primary" type="button" ng-click="add()">新增</button>
+<button class="btn btn-primary" type="button" ng-click="del()">删除</button>
+<button class="btn btn-primary" type="button" ng-click="edit()">编辑</button>
+<button class="btn btn-primary" type="button" ng-click="reload()">刷新</button>
+<hr>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th></th>
+        <th>序号</th>
+        <th>班级名称</th>
+        <th>所属院系</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="c in classes" on-repeat-finish="renderTable()">
+        <td><input type="checkbox" name="list" value="{{$index}}"></td>
+        <td>{{$index+1}}</td>
+        <td>{{c.name}}</td>
+        <td>{{deptMap[c.deptId]}}</td>
+    </tr>
+    </tbody>
+</table>
+<script type="text/ng-template" id="add.html">
+    <div class="modal-header">
+        <h4 class="modal-title">{{clazz.id?"编辑":"增加"}}班级</h4>
+    </div>
+    <div class="modal-body">
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <form class="form-horizontal">
+            <div class="form-group {{!clazz.name&&check?'has-error':''}}">
+                <label for="title" class="col-md-2 control-label">班级名称</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="title" name="name" type="text" ng-model="clazz.name" class="form-control rounded" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!clazz.deptId&&check?'has-error':''}}">
+                <label for="dept" class="col-md-2 control-label">所属院系</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <select id="dept" class="form-control rounded" ng-model="clazz.deptId">
+                            <option value="{{d.id}}" ng-repeat="d in depts" ng-selected="clazz.deptId==d.id">{{d.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">确定</button>
+        <button class="btn btn-default" ng-click="cancel()">取消</button>
+    </div>
+</script>

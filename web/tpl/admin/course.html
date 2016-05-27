@@ -1,0 +1,83 @@
+<button class="btn btn-primary" type="button" ng-click="add()">新增</button>
+<button class="btn btn-primary" type="button" ng-click="del()">删除</button>
+<button class="btn btn-primary" type="button" ng-click="edit()">编辑</button>
+<button class="btn btn-primary" type="button" ng-click="reload()">刷新</button>
+<hr>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th></th>
+        <th>序号</th>
+        <th>课程号</th>
+        <th>课程名称</th>
+        <th>开课周数</th>
+        <th>结课周数</th>
+        <th>学分</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="c in courses" on-repeat-finish="renderTable()">
+        <td><input type="checkbox" name="list" value="{{$index}}"></td>
+        <td>{{$index+1}}</td>
+        <td>{{c.cno}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.weekStart}}</td>
+        <td>{{c.weekEnd}}</td>
+        <td>{{c.credit}}</td>
+    </tr>
+    </tbody>
+</table>
+<script type="text/ng-template" id="add.html">
+    <div class="modal-header">
+        <h4 class="modal-title">{{course.id?"编辑":"增加"}}课程</h4>
+    </div>
+    <div class="modal-body">
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <form class="form-horizontal">
+            <div class="form-group {{!course.cno&&check?'has-error':''}}">
+                <label for="cno" class="col-md-2 control-label">课程号</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="cno" type="text" ng-model="course.cno" class="form-control rounded">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!course.name&&check?'has-error':''}}">
+                <label for="title" class="col-md-2 control-label">课程名称</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="title" name="name" type="text" ng-model="course.name" class="form-control rounded">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!course.weekStart&&check?'has-error':''}}">
+                <label for="weekStart" class="col-md-2 control-label">开课周数</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="weekStart" type="number" min="1" max="25" ng-model="course.weekStart" class="form-control rounded">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{(!course.weekEnd||course.weekEnd<course.weekStart)&&check?'has-error':''}}">
+                <label for="weekEnd" class="col-md-2 control-label">结课周数</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="weekEnd" type="number" min="1" max="25" ng-model="course.weekEnd" class="form-control rounded">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!course.credit&&check?'has-error':''}}">
+                <label for="credit" class="col-md-2 control-label">学分</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="credit" type="number" min="1" max="25" ng-model="course.credit" class="form-control rounded">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">确定</button>
+        <button class="btn btn-default" ng-click="cancel()">取消</button>
+    </div>
+</script>

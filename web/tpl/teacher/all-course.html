@@ -1,0 +1,27 @@
+<button class="btn btn-primary" type="button" ng-click="select()">授课</button>
+<button class="btn btn-primary" type="button" ng-click="reload()">刷新</button>
+<hr>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th></th>
+        <th>序号</th>
+        <th>课程号</th>
+        <th>课程名称</th>
+        <th>开课周数</th>
+        <th>结课周数</th>
+        <th>学分</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="c in courses" on-repeat-finish="renderTable()">
+        <td><input type="checkbox" name="list" value="{{$index}}"></td>
+        <td>{{$index+1}}</td>
+        <td>{{c.cno}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.weekStart}}</td>
+        <td>{{c.weekEnd}}</td>
+        <td>{{c.credit}}</td>
+    </tr>
+    </tbody>
+</table>

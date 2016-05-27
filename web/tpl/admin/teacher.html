@@ -1,0 +1,104 @@
+<button class="btn btn-primary" type="button" ng-click="add()">新增</button>
+<button class="btn btn-primary" type="button" ng-click="del()">删除</button>
+<button class="btn btn-primary" type="button" ng-click="edit()">编辑</button>
+<button class="btn btn-primary" type="button" ng-click="reload()">刷新</button>
+<hr>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th></th>
+        <th>序号</th>
+        <th>工号</th>
+        <th>名字</th>
+        <th>性别</th>
+        <th>院系</th>
+        <th>备注</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="t in teachers" on-repeat-finish="renderTable()">
+        <td><input type="checkbox" name="list" value="{{$index}}"></td>
+        <td>{{$index+1}}</td>
+        <td>{{t.tno}}</td>
+        <td>{{t.name}}</td>
+        <td>{{t.gender==0?'男':'女'}}</td>
+        <td>{{deptMap[t.deptId]}}</td>
+        <td>{{t.notes}}</td>
+    </tr>
+    </tbody>
+</table>
+<script type="text/ng-template" id="add.html">
+    <div class="modal-header">
+        <h4 class="modal-title">{{teacher.id?"编辑":"增加"}}教职工</h4>
+    </div>
+    <div class="modal-body">
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <form class="form-horizontal">
+            <div class="form-group {{!teacher.tno&&check?'has-error':''}}">
+                <label for="tno" class="col-md-2 control-label">工号</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="tno" type="text" ng-model="teacher.tno" class="form-control rounded" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!teacher.name&&check?'has-error':''}}">
+                <label for="name" class="col-md-2 control-label">名字</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="name" type="text" ng-model="teacher.name" class="form-control rounded" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!teacher.id&&!teacher.password&&check?'has-error':''}}">
+                <label for="password" class="col-md-2 control-label">{{teacher.id?"新":"初始"}}密码</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="password" type="password" ng-model="teacher.password" class="form-control rounded" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{teacher.password!=repwd&&check?'has-error':''}}">
+                <label for="repwd" class="col-md-2 control-label">重复密码</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="repwd" type="password" ng-model="repwd" class="form-control rounded" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!teacher.id&&!teacher.gender&&check?'has-error':''}}">
+                <label for="gender" class="col-md-2 control-label">性别</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <select id="gender" class="form-control rounded" ng-model="teacher.gender">
+                            <option value="0">男</option>
+                            <option value="1">女</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!teacher.deptId&&check?'has-error':''}}">
+                <label for="dept" class="col-md-2 control-label">所属院系</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <select id="dept" class="form-control rounded" ng-model="teacher.deptId">
+                            <option value="{{d.id}}" ng-repeat="d in depts" ng-selected="teacher.deptId==d.id">{{d.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="notes">备注</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <textarea id="notes" ng-model="teacher.notes" maxlength="255" class="form-control rounded" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">确定</button>
+        <button class="btn btn-default" ng-click="cancel()">取消</button>
+    </div>
+</script>

@@ -1,0 +1,29 @@
+<h4>修改密码</h4>
+<hr>
+<form class="form-horizontal" ng-submit="submit()">
+    <div class="form-group">
+        <label for="oldPwd" class="col-md-2 control-label">原密码</label>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input id="oldPwd" type="password" ng-model="oldPwd" class="form-control rounded" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-md-2 control-label">新密码</label>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input id="password" type="password" ng-model="password" class="form-control rounded" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-group {{password!=rePwd&&check?'has-error':''}}">
+        <label for="rePwd" class="col-md-2 control-label">重复密码</label>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input id="rePwd" type="password" ng-model="rePwd" class="form-control rounded" required>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary col-md-offset-1">修改密码</button>
+</form>

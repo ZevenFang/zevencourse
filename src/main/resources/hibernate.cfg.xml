@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+    <session-factory>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.url">jdbc:mysql://115.28.219.153:3306/zevencourse?characterEncoding=utf8</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--<property name="show_sql">true</property>-->
+    	<!--<property name="format_sql">true</property>-->
+		<property name="connection.username">zevencourse</property>
+		<property name="connection.password">course1008610010</property>
+		<!-- C3P0连接池设定-->
+		<!--<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.c3p0.max_size">20</property>
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.timeout">120</property>
+		<property name="hibernate.c3p0.max_statements">100</property>
+		<property name="hibernate.c3p0.idle_test_period">120</property>
+		<property name="hibernate.c3p0.acquire_increment">2</property>-->
+		<!--<property name="connection.username">root</property>-->
+		<property name="cache.use_second_level_cache">false</property>
+		<!--<property name="hbm2ddl.auto">update</property>-->
+		<mapping class="com.zeven.course.model.Clazz"/>
+		<mapping class="com.zeven.course.model.Course"/>
+		<mapping class="com.zeven.course.model.CourseStudent"/>
+		<mapping class="com.zeven.course.model.Dept"/>
+		<mapping class="com.zeven.course.model.Student"/>
+		<mapping class="com.zeven.course.model.Teacher"/>
+		<mapping class="com.zeven.course.model.TeacherCourse"/>
+	</session-factory>
+    
+</hibernate-configuration>

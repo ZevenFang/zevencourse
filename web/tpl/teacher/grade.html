@@ -1,0 +1,115 @@
+<h4>{{course.name?"登记成绩——"+course.name:""}}</h4>
+<hr>
+<button class="btn btn-primary" type="button" ng-click="edit()">编辑</button>
+<button class="btn btn-primary" type="button" ng-click="reload()">刷新</button>
+<hr>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th></th>
+        <th>序号</th>
+        <th>学号</th>
+        <th>名字</th>
+        <th>性别</th>
+        <th>班级</th>
+        <th>成绩</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="s in students" on-repeat-finish="renderTable()">
+        <td><input type="checkbox" name="list" value="{{$index}}"></td>
+        <td>{{$index+1}}</td>
+        <td>{{s.sno}}</td>
+        <td>{{s.name}}</td>
+        <td>{{s.gender==0?'男':'女'}}</td>
+        <td>{{classesMap[s.clazzId]}}</td>
+        <td ng-if="gradeMap[s.id]==0"><input type="number" min="1" max="100" style="width: 60px" ng-blur="record($event,s.id)"></td>
+        <td ng-if="gradeMap[s.id]!=0">{{gradeMap[s.id]}}</td>
+    </tr>
+    </tbody>
+</table>
+<script type="text/ng-template" id="add.html">
+    <div class="modal-header">
+        <h4 class="modal-title">{{student.id?"编辑":"增加"}}学生</h4>
+    </div>
+    <div class="modal-body">
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <form class="form-horizontal">
+            <div class="form-group {{!student.sno&&check?'has-error':''}}">
+                <label for="sno" class="col-md-2 control-label">学号</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="sno" type="text" ng-model="student.sno" class="form-control rounded" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!student.name&&check?'has-error':''}}">
+                <label for="name" class="col-md-2 control-label">名字</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="name" type="text" ng-model="student.name" class="form-control rounded" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-md-2 control-label">{{student.id?"新":"初始"}}密码</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="password" type="password" placeholder="{{student.id?'':'不填写则默认密码为111111'}}" ng-model="student.password" class="form-control rounded" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{student.password!=repwd&&check?'has-error':''}}">
+                <label for="repwd" class="col-md-2 control-label">重复密码</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input id="repwd" type="password" ng-model="repwd" class="form-control rounded" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!student.id&&!student.gender&&check?'has-error':''}}">
+                <label for="gender" class="col-md-2 control-label">性别</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <select id="gender" class="form-control rounded" ng-model="student.gender">
+                            <option value="0">男</option>
+                            <option value="1">女</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!student.id&&!student.deptId&&check?'has-error':''}}">
+                <label for="dept" class="col-md-2 control-label">院系</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <select id="dept" class="form-control rounded" ng-model="student.deptId" ng-change="changeDept()">
+                            <option value="{{d.id}}" ng-repeat="d in depts" ng-selected="student.deptId==d.id">{{d.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group {{!student.id&&!student.classId&&check?'has-error':''}}">
+                <label for="class" class="col-md-2 control-label">班级</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <select id="class" class="form-control rounded" ng-model="student.classId">
+                            <option value="{{c.id}}" ng-repeat="c in classMap[student.deptId]" ng-selected="student.classId==c.id">{{c.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="notes">备注</label>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <textarea id="notes" ng-model="student.notes" maxlength="255" class="form-control rounded" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">确定</button>
+        <button class="btn btn-default" ng-click="cancel()">取消</button>
+    </div>
+</script>
