@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+
 /**
  * Created by fangf on 2016/5/20.
  */
@@ -15,7 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ClassManageAction {
 
-    private ClassService service = new ClassService();
+    @Resource
+    private ClassService service;
 
     @ResponseBody
     @RequestMapping("/getAll")

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+
 /**
  * Created by fangf on 2016/5/20.
  */
@@ -16,7 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class StudentManageAction {
 
-    private StudentService service = new StudentService();
+    @Resource
+    private StudentService service;
 
     @ResponseBody
     @RequestMapping("/getAll")

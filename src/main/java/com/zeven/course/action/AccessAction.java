@@ -8,16 +8,15 @@ import com.zeven.course.util.Auth;
 import com.zeven.course.util.MD5Encoder;
 import com.zeven.course.util.Message;
 import com.zeven.course.util.Token;
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,8 +28,10 @@ import java.util.Map;
 @Controller
 public class AccessAction {
 
-    private StudentService sService = new StudentService();
-    private TeacherService tService = new TeacherService();
+    @Resource
+    private StudentService sService;
+    @Resource
+    private TeacherService tService;
 
     @ResponseBody
     @RequestMapping("signin")

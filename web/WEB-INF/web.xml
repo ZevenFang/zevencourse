@@ -29,7 +29,8 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <!-- 提交html|js|css请求给默认的dispatcher -->
+
+    <!-- 提交资源文件请求给默认的dispatcher -->
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.html</url-pattern>
@@ -46,4 +47,21 @@
         <servlet-name>default</servlet-name>
         <url-pattern>/fonts/*</url-pattern>
     </servlet-mapping>
+
+    <!--
+    配置openSessionInViewFilter用来启动hibernate，
+    在经过url请求后，这里就会开启hibernate的session，
+    如果不配置，就无法使用getCurrentSession
+    -->
+    <filter>
+        <filter-name>SpringOpenSessionInViewFilter</filter-name>
+        <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SpringOpenSessionInViewFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+
 </web-app>

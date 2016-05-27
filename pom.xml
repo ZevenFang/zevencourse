@@ -6,7 +6,7 @@
 
     <groupId>com.zeven.course</groupId>
     <artifactId>ZevenCourse</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <dependencies>
         <dependency>
@@ -31,6 +31,36 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>4.1.6.RELEASE</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/org.springframework/spring-orm -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>4.1.6.RELEASE</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.9</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/com.jolbox/bonecp -->
+        <dependency>
+            <groupId>com.jolbox</groupId>
+            <artifactId>bonecp</artifactId>
+            <version>0.8.0.RELEASE</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
         </dependency>
         <!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
         <dependency>

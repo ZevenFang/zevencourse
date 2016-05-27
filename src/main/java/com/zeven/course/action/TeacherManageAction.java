@@ -1,6 +1,5 @@
 package com.zeven.course.action;
 
-import com.zeven.course.model.Clazz;
 import com.zeven.course.model.Teacher;
 import com.zeven.course.service.TeacherService;
 import com.zeven.course.util.MD5Encoder;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import javax.annotation.Resource;
 
 /**
  * Created by fangf on 2016/5/20.
@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class TeacherManageAction {
 
-    private TeacherService service = new TeacherService();
+    @Resource
+    private TeacherService service;
 
     @ResponseBody
     @RequestMapping("/getAll")

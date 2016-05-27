@@ -8,6 +8,7 @@ import com.zeven.course.model.TeacherCourse;
 import com.zeven.course.util.Message;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,9 +18,8 @@ import java.util.Map;
 /**
  * Created by fangf on 2016/5/22.
  */
+@Component
 public class TeacherCourseService extends DaoSupportImpl<TeacherCourse> {
-
-    private CourseService courseService = new CourseService();
 
     public Message selectCourses(int userID, Integer[] ids){
         Session session = getSession();
@@ -35,8 +35,9 @@ public class TeacherCourseService extends DaoSupportImpl<TeacherCourse> {
             tc.setCid(i);
             session.save(tc);
         }
+        session.flush();
         tx.commit();
-        closeSession();
+
         return new Message(1,"ok");
     }
 
@@ -47,7 +48,6 @@ public class TeacherCourseService extends DaoSupportImpl<TeacherCourse> {
                 .setParameter("tid", userID)
                 .setParameterList("cid", ids).executeUpdate();
         tx.commit();
-        closeSession();
         return rows > 0 ? new Message(1, "ok") : new Message(-1, "删除失败");
     }
 
@@ -64,7 +64,7 @@ public class TeacherCourseService extends DaoSupportImpl<TeacherCourse> {
                 .setParameterList("cid",cids).list();
         data.put("teachers", TeacherCommon.teacherList(teachers));
         data.put("tc",findAll());
-        closeSession();
+
         return data;
     }
 

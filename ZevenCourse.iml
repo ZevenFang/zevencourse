@@ -3,7 +3,10 @@
   <component name="FacetManager">
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="sessionFactory" value="dataSource" />
+        </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
       </configuration>
@@ -57,6 +60,15 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.1.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.1.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.1.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-orm:4.1.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.1.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.21" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.21" level="project" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.8.9" level="project" />
+    <orderEntry type="library" name="Maven: com.jolbox:bonecp:0.8.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:15.0" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.38" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:4.2.2.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.1.0.GA" level="project" />
     <orderEntry type="library" name="Maven: dom4j:dom4j:1.6.1" level="project" />

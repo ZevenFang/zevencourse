@@ -6,6 +6,7 @@ import com.zeven.course.model.Course;
 import com.zeven.course.model.Teacher;
 import com.zeven.course.model.TeacherCourse;
 import org.hibernate.Query;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,19 +16,20 @@ import java.util.Map;
 /**
  * Created by fangf on 2016/5/21.
  */
+@Component
 public class CourseService extends DaoSupportImpl<Course>{
 
     public List getAvailableCourses(){
         Query query = getSession().createQuery("FROM Course WHERE id not in (SELECT distinct cid FROM TeacherCourse)");
         List list = query.list();
-        closeSession();
+
         return list;
     }
 
     public List findCoursesByTid(int id){
         Query query = getSession().createQuery("FROM Course WHERE id in (SELECT cid FROM TeacherCourse WHERE tid = (:tid))");
         List list = query.setParameter("tid",id).list();
-        closeSession();
+
         return list;
     }
     public Map<String,List> findCoursesBySid(int id){
@@ -49,7 +51,7 @@ public class CourseService extends DaoSupportImpl<Course>{
                     .setParameterList("cid",cids).list();
             tc = getSession().createQuery("FROM TeacherCourse WHERE cid in (:cid)").setParameterList("cid",cids).list();
         }
-        closeSession();
+
         data.put("teachers", TeacherCommon.teacherList(teachers));
         data.put("tc",tc);
         return data;

@@ -1,19 +1,22 @@
 package com.zeven.course.dao;
 
-import com.zeven.course.util.HibernateSessionFactory;
-import com.zeven.course.util.Message;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.Collections;
 import java.util.List;
 
-@Transactional
 @SuppressWarnings("unchecked")
-public abstract class DaoSupportImpl<T> implements DaoSupport<T> {
+@Transactional
+public class DaoSupportImpl<T> implements DaoSupport<T> {
+
+	@Resource
+	private SessionFactory sessionFactory;
 
 	private Class<T> clazz;
 
@@ -23,27 +26,24 @@ public abstract class DaoSupportImpl<T> implements DaoSupport<T> {
 	}
 
 	protected Session getSession() {
-		return HibernateSessionFactory.getSession();
-	}
-
-	protected void closeSession(){
-		HibernateSessionFactory.closeSession();
+		return sessionFactory.getCurrentSession();
 	}
 
 	public void save(T entity) {
 		Session session = getSession();
 		Transaction transaction = session.beginTransaction();
 		session.save(entity);
+        session.flush();
 		transaction.commit();
-		closeSession();
 	}
 
 	public void update(T entity) {
 		Session session = getSession();
 		Transaction transaction = session.beginTransaction();
 		session.update(entity);
-		transaction.commit();
-		closeSession();
+        session.flush();
+        transaction.commit();
+
 	}
 
 	public void delete(Serializable id) {
@@ -54,7 +54,7 @@ public abstract class DaoSupportImpl<T> implements DaoSupport<T> {
 			session.delete(obj);
 		}
 		transaction.commit();
-		closeSession();
+
 	}
 
 	public void deleteByIds(Integer[] ids) {
@@ -65,7 +65,7 @@ public abstract class DaoSupportImpl<T> implements DaoSupport<T> {
 				.setParameterList("ids", ids)//
 				.executeUpdate();
 		transaction.commit();
-		closeSession();
+
 	}
 
 	public T findById(Serializable id) {

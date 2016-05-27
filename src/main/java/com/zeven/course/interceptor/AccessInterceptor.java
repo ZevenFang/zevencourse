@@ -1,11 +1,6 @@
 package com.zeven.course.interceptor;
 
-import com.zeven.course.util.Auth;
 import com.zeven.course.util.Token;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,19 +18,21 @@ public class AccessInterceptor extends CrossDomainInterceptor {
                 if (token.getErr()==Token.ExpiredJwtError){
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
                             "Authentication Failed: 认证过期");
-                    return true;
+                    return false;
                 }
                 if (token.getErr()==Token.SignatureError){
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
                             "Authentication Failed: 非法认证");
-                    return true;
+                    return false;
                 }
                 boolean isAdmin = !token.getRole().equals("admin")&&uri.startsWith("/Admin");
                 boolean isTeacher = !token.getRole().equals("teacher")&&uri.startsWith("/Teacher");
                 boolean isStudent = !token.getRole().equals("student")&&uri.startsWith("/Student");
-                if (isAdmin||isTeacher||isStudent)
+                if (isAdmin||isTeacher||isStudent) {
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
                             "Authentication Failed: 无权访问");
+                    return false;
+                }
         }
         return true;
     }

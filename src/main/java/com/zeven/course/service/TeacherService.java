@@ -4,13 +4,17 @@ import com.zeven.course.dao.DaoSupportImpl;
 import com.zeven.course.model.Teacher;
 import com.zeven.course.util.MD5Encoder;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * Created by fangf on 2016/5/20.
  */
+@Component
 public class TeacherService extends DaoSupportImpl<Teacher> {
 
     public Teacher login(String tno, String password){
@@ -27,9 +31,11 @@ public class TeacherService extends DaoSupportImpl<Teacher> {
         Transaction tx = getSession().beginTransaction();
         session.createQuery("DELETE FROM TeacherCourse WHERE tid in (:ids)")
                 .setParameterList("ids",ids).executeUpdate();
-        deleteByIds(ids);
+        session.createQuery(
+                "DELETE FROM Teacher WHERE id IN (:ids)")
+                .setParameterList("ids", ids).executeUpdate();
         tx.commit();
-        closeSession();
+
     }
 
     public List findAllWithoutAdmin(){

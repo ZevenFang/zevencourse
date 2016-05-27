@@ -7,6 +7,8 @@ import com.zeven.course.util.Token;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+
 /**
  * Created by fangf on 2016/5/22.
  */
@@ -14,11 +16,16 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class TeacherAction {
 
-    private CourseService courseService = new CourseService();
-    private StudentService studentService = new StudentService();
-    private TeacherCourseService tcService = new TeacherCourseService();
-    private ClassService classService = new ClassService();
-    private CourseStudentService csService = new CourseStudentService();
+    @Resource
+    private CourseService courseService;
+    @Resource
+    private StudentService studentService;
+    @Resource
+    private TeacherCourseService tcService;
+    @Resource
+    private ClassService classService;
+    @Resource
+    private CourseStudentService csService;
 
     @ResponseBody
     @RequestMapping("/course/getAll")

@@ -5,7 +5,7 @@
 
 ## 完善代码
 1. 本系统可能存在诸多bug，欢迎帮助完善代码；
-2. 如需修改后端代码，请直接到src目录下修改源码，springmvc的配置文件在web/WEB-INF下，hibernate配置在src/main/resources下;
+2. 如需修改后端代码，请直接到src目录下修改源码，springmvc的配置文件在web/WEB-INF下;
 3. 如需修改前端代码，请在web目录下编辑，每次编辑源码，需要压缩资源文件，请先在电脑安装NodeJs的运行环境：
 ```shell
 cd web #切换到前端目录

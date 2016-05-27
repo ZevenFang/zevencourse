@@ -6,6 +6,7 @@ import com.zeven.course.model.TeacherCourse;
 import com.zeven.course.util.Message;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import java.util.Map;
 /**
  * Created by fangf on 2016/5/23.
  */
+@Component
 public class CourseStudentService extends DaoSupportImpl<CourseStudent> {
 
     public Message selectCourses(int userID, Integer[] ids){
@@ -31,8 +33,9 @@ public class CourseStudentService extends DaoSupportImpl<CourseStudent> {
             tc.setCid(i);
             session.save(tc);
         }
+        session.flush();
         tx.commit();
-        closeSession();
+
         return new Message(1,"ok");
     }
 
@@ -43,7 +46,6 @@ public class CourseStudentService extends DaoSupportImpl<CourseStudent> {
                 .setParameter("sid", userID)
                 .setParameterList("cid", ids).executeUpdate();
         tx.commit();
-        closeSession();
         return rows > 0 ? new Message(1, "ok") : new Message(-1, "删除失败");
     }
 
