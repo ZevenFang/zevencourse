@@ -14,9 +14,11 @@ gulp #运行default任务，压缩代码
 gulp watch #或者运行watch任务，实时监控代码并压缩
 ```
 
-
 ## 安全性
 本选课系统采用 [JWT(Json Web Token)](https://jwt.io/) 认证机制，划分管理员、教师、学生的权限，不存在跨权限调用接口问题。
 
 ## 注意事项
 本选课系统前端接口直接指向绝对路径'/'，所以部署后端代码时，请部署在tomcat的webapp/ROOT目录下。
+
+## LICENSE
+GPL license. See the LICENSE file for details.
