@@ -10,8 +10,8 @@
     <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/zevencourse?characterEncoding=UTF-8"/>
-        <property name="username" value="zevencourse" />
-        <property name="password" value="course1008610010" />
+        <property name="username" value="root" />
+        <property name="password" value="" />
         <!--<property name="connectionTimeout" value="7000"/>-->
         <property name="acquireRetryAttempts" value="3"/>
         <property name="maxConnectionsPerPartition" value="20"/>

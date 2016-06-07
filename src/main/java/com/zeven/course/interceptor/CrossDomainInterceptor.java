@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by fangf on 2016/5/19.
+ * 允许跨域请求
  */
 public class CrossDomainInterceptor extends HandlerInterceptorAdapter {
 

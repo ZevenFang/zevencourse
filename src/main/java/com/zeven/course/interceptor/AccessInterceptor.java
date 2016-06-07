@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by fangf on 2016/5/21.
+ * OAuth权限认证
  */
 public class AccessInterceptor extends CrossDomainInterceptor {
 
