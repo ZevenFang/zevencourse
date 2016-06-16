@@ -56,4 +56,4 @@ app.config(
     }
   ]);
 
-app.constant('host','/');
+app.constant('host','');
