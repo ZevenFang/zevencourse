@@ -4,8 +4,11 @@
 * 前端使用AngularJs+JQuery+Bootstrap开发，并且使用前端构建工具[Gulp](http://gulpjs.com/)。
 
 ## 界面
-![login page](https://github.com/ZevenFang/zevencourse/master/screenshot/course_1.png)
-![login page](https://github.com/ZevenFang/zevencourse/master/screenshot/course_2.png)
+![login page](https://raw.github.com/ZevenFang/zevencourse/master/screenshot/course_1.png)
+
+![admin page](https://raw.github.com/ZevenFang/zevencourse/master/screenshot/course_2.png)
+
+![modify password](https://raw.github.com/ZevenFang/zevencourse/master/screenshot/course_3.png)
 
 ## 完善代码
 1. 本系统可能存在诸多bug，欢迎帮助完善代码；
