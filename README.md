@@ -3,6 +3,10 @@
 * 本系统采用了前后端分离的开发模式，后端采用Springmvc+Hibernate框架。
 * 前端使用AngularJs+JQuery+Bootstrap开发，并且使用前端构建工具[Gulp](http://gulpjs.com/)。
 
+## 界面
+![login page](https://github.com/ZevenFang/zevencourse/master/screenshot/course_1.png)
+![login page](https://github.com/ZevenFang/zevencourse/master/screenshot/course_2.png)
+
 ## 完善代码
 1. 本系统可能存在诸多bug，欢迎帮助完善代码；
 2. 如需修改后端代码，请直接到src目录下修改源码，springmvc的配置文件在web/WEB-INF下，请确保applicationContext.xml数据库的用户名和密码正确并且有操作权限；
