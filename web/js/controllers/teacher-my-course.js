@@ -2,7 +2,7 @@
  * Created by fangf on 2016/5/22.
  */
 app.controller("TeacherMyCourseCtrl",function ($scope,$http,host,SweetAlert,$state) {
-    $http.get(host+"/Teacher/course/selectedCourses").success(function (d) {
+    $http.get(host+"Teacher/course/selectedCourses").success(function (d) {
         if (d.code==1)
             $scope.courses = d.data;
         if (d.data.length==0) $('.table').dataTable();
@@ -24,7 +24,7 @@ app.controller("TeacherMyCourseCtrl",function ($scope,$http,host,SweetAlert,$sta
                 closeOnConfirm: false},
             function(ok){
                 if (ok)
-                $http.post(host+"/Teacher/course/unselectCourses",{ids:ids}).success(function (d) {
+                $http.post(host+"Teacher/course/unselectCourses",{ids:ids}).success(function (d) {
                     if (d.code==1) {
                         SweetAlert.swal("取消授课成功", "", "success");
                         $state.reload();

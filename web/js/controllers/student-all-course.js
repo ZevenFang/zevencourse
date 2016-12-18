@@ -2,7 +2,7 @@
  * Created by fangf on 2016/5/22.
  */
 app.controller("StudentAllCourseCtrl",function ($scope,$http,host,SweetAlert) {
-    $http.get(host+"/Student/course/getAll").success(function (d) {
+    $http.get(host+"Student/course/getAll").success(function (d) {
         if (d.code==1) {
             $scope.courses = d.data.courses;
             $scope.teachers = {};
@@ -33,7 +33,7 @@ app.controller("StudentAllCourseCtrl",function ($scope,$http,host,SweetAlert) {
                 closeOnConfirm: false},
             function(ok){
                 if (ok)
-                    $http.post(host+"/Student/course/selectCourses",{ids:ids}).success(function (d) {
+                    $http.post(host+"Student/course/selectCourses",{ids:ids}).success(function (d) {
                         if (d.code==1)
                             SweetAlert.swal("选课成功", "请到“我的选课”中查看您的选课","success");
                         else SweetAlert.swal("选课失败", d.msg, "error");
