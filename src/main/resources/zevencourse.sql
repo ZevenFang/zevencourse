@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `clazz`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `clazz` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `dept_id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS `course`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `course` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `cno` varchar(45) NOT NULL,
   `credit` double NOT NULL,
   `name` varchar(45) NOT NULL,
@@ -100,7 +100,7 @@ DROP TABLE IF EXISTS `dept`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `dept` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(255) DEFAULT NULL,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
@@ -124,7 +124,7 @@ DROP TABLE IF EXISTS `student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `student` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `clazz_id` int(11) NOT NULL,
   `gender` tinyint(4) NOT NULL,
   `name` varchar(45) NOT NULL,
@@ -152,7 +152,7 @@ DROP TABLE IF EXISTS `teacher`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `teacher` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `dept_id` int(11) NOT NULL,
   `gender` tinyint(4) NOT NULL,
   `is_admin` tinyint(4) NOT NULL,
@@ -161,7 +161,7 @@ CREATE TABLE `teacher` (
   `password` varchar(32) NOT NULL,
   `tno` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,4 +206,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-07 22:06:15
+-- Dump completed on 2016-12-18 18:38:50
