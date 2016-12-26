@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ZevenFang/zevencourse.svg?branch=master)](https://travis-ci.org/ZevenFang/zevencourse)
+
 ## 简介
 * 本选课系统开源协议基于GPL协议，仅用作交流学习用途。
 * 本系统采用了前后端分离的开发模式，后端采用Springmvc+Hibernate框架。
